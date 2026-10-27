@@ -1,0 +1,6 @@
+# 让 GitHub 按技能包（Markdown）识别本仓库的主要语言，检查脚本不计入语言统计。
+*.md linguist-detectable=true
+*.md linguist-documentation=false
+*.py linguist-detectable=false
+*.html linguist-detectable=false
+*.svg linguist-detectable=false
