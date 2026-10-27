@@ -32,6 +32,7 @@ HARD_PATTERNS = {
     "只X不够还要Y": r"(?:只|光)[^。！？\n]{1,45}(?:不够|不行|没用)[^。！？\n]{0,12}(?:还要|还得|才)[^。！？\n]{1,45}",
     "只是X才是Y": r"只是[^。！？\n]{1,45}(?:，|,)?[^。！？\n]{0,12}才是[^。！？\n]{1,45}",
     # 换了动词的同一种壳：这不叫努力，这叫瞎练；不难，难的是天天做；不卖苹果，卖的是眼光
+    "X不是问题，Y才是": r"不是[^。！？，,\n]{1,20}[，,][^。！？，,\n]{1,20}才是",
     "不叫X，叫Y": r"不(?:叫|算)[^。！？，,\n]{1,20}[，,][^。！？，,\n]{0,4}(?:叫|算)[^。！？\n]{1,30}",
     "不AX，A的是Y": r"不([\u4e00-\u9fa5])[^。！？，,\n]{0,20}[，,][^。！？，,\n]{0,6}\1(?:的是|才是)[^。！？\n]{1,30}",
 }
@@ -42,6 +43,7 @@ SOFT_TERMS = [
     "助力", "全方位", "无缝", "深度融合", "生态闭环", "底层逻辑", "重塑", "颠覆性",
     "总而言之", "综上所述", "让我们一起", "未来可期", "希望对你有帮助", "如果你有任何问题",
     "值得一提的是", "不可否认", "毋庸置疑",
+    "说了这么多", "收个总", "正确姿势", "行业公开的秘密", "干货来了", "关注我，下期",
 ]
 
 SOFT_REGEX = {
@@ -49,8 +51,9 @@ SOFT_REGEX = {
     "“进行＋动词”": r"进行(?:了)?(?:一次|一番)?[一-龥]{2}",
     "层叠的“的”（一句里 4 个以上）": r"[^。！？\n]*?(?:的[^。！？，\n]{0,8}){4,}",
     "四字词排比": r"(?:[一-龥]{4}[、，,]){3,}[一-龥]{4}",
-    "破折号当连接": r"——",
+    "“最后送你/给你几个”式清单": r"(?:送你|给你|教你)[两三四五六七八九十]个",
 }
+DASH_LIMIT = 5  # 一篇里破折号超过这个数，合并成一条“破折号过多”提醒
 
 
 def line_number(text: str, position: int) -> int:
@@ -82,6 +85,9 @@ def analyze(text: str, allow: list[str] | None = None) -> dict[str, object]:
     for name, pattern in SOFT_REGEX.items():
         for match in re.finditer(pattern, text):
             soft.append({"line": line_number(text, match.start()), "term": name})
+    dashes = [line_number(text, m.start()) for m in re.finditer("——", text)]
+    if len(dashes) > DASH_LIMIT:
+        soft.append({"line": dashes[0], "term": f"破折号过多（全文 {len(dashes)} 处，超过 {DASH_LIMIT} 处）"})
 
     hard.sort(key=lambda item: (int(item["line"]), str(item["pattern"])))
     soft.sort(key=lambda item: (int(item["line"]), str(item["term"])))
