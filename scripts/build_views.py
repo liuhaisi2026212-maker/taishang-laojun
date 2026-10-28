@@ -4,6 +4,7 @@ import os
 import re
 
 import build_mindmap
+from build_mindmap import VERSION
 
 ROOT = Path(__file__).resolve().parents[1]
 ORDER = ['taishang-laojun', 'tslj-select', 'tslj-idea', 'tslj-series', 'tslj-open', 'tslj-script', 'tslj-title', 'tslj-monetize']
@@ -53,20 +54,20 @@ def render(bot=False, lite=False):
             return f'[{label}]({relative})'
         parts.append(re.sub(r'\[([^\]]+)\]\(([^)]+)\)', link, body(path)))
     if lite:
-        heading = ('# 太上老君·AI炼丹炉：Bot精简版\n\n'
+        heading = ('# 太上老君·AI炼丹炉：Bot精简版\n\n' + f'版本 {VERSION}。' +
                    '适合系统提示词有长度限制的智能体（如各类 Bot 的人设设定框）。包含总入口、炉心、底味访谈和七个模块；'
                    '推理示范、去AI味、改稿六刀和复盘细则在完整版 Bot 文件里，可作为知识库附件一起上传。'
                    '本文件由技能源生成，不要单独维护另一套规则。\n\n' + FIRST_RULES)
         parts.append('## 许可\n\n' + LICENSE_NOTE + '第三方声明见完整版。')
     elif bot:
-        heading = ('# 太上老君·AI炼丹炉：Bot完整流程\n\n'
+        heading = ('# 太上老君·AI炼丹炉：Bot完整流程\n\n' + f'版本 {VERSION}。' +
                    '本文自包含。下面“读取模块/参考”均指本文件内对应章节，不要求另找仓库路径。'
                    '按需使用章节，不按目录顺序逐项执行。宿主权限和用户请求优先；无工具能力时不假装执行。'
                    '本文件由技能源生成，不要单独维护另一套规则。\n\n' + FIRST_RULES)
         parts.append('## 分发许可与第三方说明\n\n' + LICENSE_NOTE + '本修订调整了流程与适用条件，第三方许可如下。'
                      + '\n\n' + (ROOT/'THIRD-PARTY-NOTICES.md').read_text(encoding="utf-8"))
     else:
-        heading = ('# 炼丹炉配方全集\n\n由技能源生成的人读版；案例经验和推导不等于所有赛道效果验证。'
+        heading = ('# 炼丹炉配方全集\n\n' + f'版本 {VERSION}。' + '由技能源生成的人读版；案例经验和推导不等于所有赛道效果验证。'
                    '使用时按当前请求选章节，不要求完整走完所有模块。\n\n')
     return (heading + '\n\n---\n\n'.join(parts)).rstrip() + '\n'
 

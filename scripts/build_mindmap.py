@@ -1,8 +1,10 @@
 """Build the panorama SVG and interactive HTML from one data source."""
 from html import escape
 from pathlib import Path
+import json
 
 ROOT = Path(__file__).resolve().parents[1]
+VERSION = json.loads((ROOT / '.claude-plugin/plugin.json').read_text(encoding='utf-8'))['version']  # 唯一的版本号来源
 
 TITLE = '太上老君 · AI炼丹炉'
 SUBTITLE = '把别人的爆款，炼成你自己的视频'
@@ -66,7 +68,7 @@ def svg():
     box = lambda x, y, bw, bh, stroke: out.append(
         f'<rect x="{x}" y="{y}" width="{bw}" height="{bh}" rx="16" fill="#192439" stroke="{stroke}"/>')
     t(44, 66, TITLE, 42, '#ffd36a', 700)
-    t(44, 106, SUBTITLE, 23, '#d4dce9')
+    t(44, 106, f'{SUBTITLE}　·　版本 {VERSION}', 23, '#d4dce9')
     box(pad, 136, w - 2 * pad, 96, '#ffd36a')
     t(64, 174, STANCE[0], 27, '#ffd36a', 700)
     t(64, 210, STANCE[1], 21, '#d4dce9')
@@ -153,7 +155,7 @@ h2{{font-size:18px;margin:22px 0 10px}}
 <body>
 <main>
 <h1>{escape(TITLE)}</h1>
-<p class="sub">{escape(SUBTITLE)}</p>
+<p class="sub">{escape(SUBTITLE)}　·　版本 {VERSION}</p>
 <div class="stance"><b>{escape(STANCE[0])}</b>{escape(STANCE[1])}</div>
 <h2>炉心：七条底层判断</h2>
 <ul class="core">{core}</ul>

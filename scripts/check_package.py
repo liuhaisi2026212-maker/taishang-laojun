@@ -17,6 +17,11 @@ def check():
         errors.append('Invalid marketplace owner/plugins')
     elif market['plugins'][0]['name'] != plugin['name'] or market['plugins'][0]['version'] != plugin['version']:
         errors.append('Plugin identity/version mismatch')
+    version = plugin['version']
+    if f'当前版本 **{version}**' not in (ROOT / 'README.md').read_text(encoding='utf-8'):
+        errors.append(f'README version is not {version}')
+    if not (ROOT / 'docs/validation.md').read_text(encoding='utf-8').startswith(f'# {version} '):
+        errors.append(f'docs/validation.md does not start with a {version} entry')
     with tempfile.TemporaryDirectory() as tmp:
         installed = Path(tmp)/'skills'
         shutil.copytree(ROOT/'skills', installed)
