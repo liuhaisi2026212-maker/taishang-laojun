@@ -4,7 +4,7 @@
 <rect width="1200" height="1662" rx="24" fill="#101725"/>
 <g font-family="-apple-system,BlinkMacSystemFont,'Segoe UI','Noto Sans CJK SC','Microsoft YaHei',sans-serif">
 <text x="44" y="66" font-size="42" fill="#ffd36a" font-weight="700">太上老君 · AI炼丹炉</text>
-<text x="44" y="106" font-size="23" fill="#d4dce9" font-weight="400">把别人的爆款，炼成你自己的视频　·　版本 0.7.2</text>
+<text x="44" y="106" font-size="23" fill="#d4dce9" font-weight="400">把别人的爆款，炼成你自己的视频　·　版本 0.8.0</text>
 <rect x="40" y="136" width="1120" height="96" rx="16" fill="#192439" stroke="#ffd36a"/>
 <text x="64" y="174" font-size="27" fill="#ffd36a" font-weight="700">总控台：按你此刻在哪，调对的兵器</text>
 <text x="64" y="210" font-size="21" fill="#d4dce9" font-weight="400">有灵感就用自己的事直接拍；没灵感就刷对标、拆爆款、存弹药库。需要认识你时才访谈。AI 下判断，你来校准。</text>
@@ -46,12 +46,12 @@
 <text x="62" y="874" font-size="26" fill="#f4a6d7" font-weight="650">03 丹方 · 系列策划</text>
 <text x="62" y="912" font-size="18" fill="#d4dce9" font-weight="400">判断型、现场型、事件型、串联型、上手型，选一个当主线</text>
 <text x="62" y="943" font-size="18" fill="#d4dce9" font-weight="400">服务观众不服务自己；列不出五期就撑不住</text>
-<text x="62" y="974" font-size="18" fill="#d4dce9" font-weight="400">一个人拍得动吗？一期期拍下去，来的是谁？</text>
+<text x="62" y="974" font-size="18" fill="#d4dce9" font-weight="400">一个人拍得动吗？来的是谁？爆了之后续集怎么接？</text>
 <text x="62" y="1016" font-size="18" fill="#f4a6d7" font-weight="400">交付：固定什么、换什么、首批五期、第一期怎么拍</text>
 <rect x="610" y="836" width="550" height="206" rx="16" fill="#192439" stroke="#78dcad"/>
 <text x="632" y="874" font-size="26" fill="#78dcad" font-weight="650">04 开炉 · 开头与结构</text>
 <text x="632" y="912" font-size="18" fill="#d4dce9" font-weight="400">一句话里装几个好懂的信息，完成破冰</text>
-<text x="632" y="943" font-size="18" fill="#d4dce9" font-weight="400">勾证衔接，最好接成钩子链</text>
+<text x="632" y="943" font-size="18" fill="#d4dce9" font-weight="400">勾证衔接接成钩子链；该留白时只说一半</text>
 <text x="632" y="974" font-size="18" fill="#d4dce9" font-weight="400">收尾给看完的理由和关注的理由，然后干脆结束</text>
 <text x="632" y="1016" font-size="18" fill="#78dcad" font-weight="400">交付：第一句、证据画面、推进、收尾和理由</text>
 <rect x="40" y="1060" width="550" height="206" rx="16" fill="#192439" stroke="#c8a4ff"/>
@@ -73,7 +73,7 @@
 <text x="62" y="1422" font-size="18" fill="#d4dce9" font-weight="400">一个能兑现的交付，只走平台允许的承接</text>
 <text x="62" y="1464" font-size="18" fill="#ffd36a" font-weight="400">交付：一个交付、承接路径、交付成本与观察点</text>
 <text x="44" y="1516" font-size="19" fill="#9facbf" font-weight="400">底味访谈：需要认识你时才用：让你越聊越想说，AI 替你总结成使用者档案</text>
-<text x="44" y="1550" font-size="19" fill="#9facbf" font-weight="400">反馈复盘：沿链条找第一个偏掉的环节，再选纠偏或顺势</text>
+<text x="44" y="1550" font-size="19" fill="#9facbf" font-weight="400">反馈复盘：先看数据定位哪一段，再沿链条找偏差，选纠偏或顺势</text>
 <text x="44" y="1584" font-size="19" fill="#ffbd72" font-weight="400">底线：不编经历和数字 · 钩子要兑现 · 合规承接 · 不服务害人的需求</text>
 <text x="44" y="1628" font-size="16" fill="#6f7d93" font-weight="400">方法来自柳爷做内容的经验，不是流量保证。 点击图片进入可展开的交互版。</text>
 </g>
