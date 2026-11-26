@@ -45,6 +45,7 @@ description: 回炉：完整成稿与改稿。把用户的素材或参考观点�
 6. 审改：
    - 从留人、完播、涨粉角度，按[改稿六刀](../taishang-laojun/references/edit-six-cuts.md)逐刀过。柳爷自己改 AI 初稿时，几乎所有动作都是“删”。
    - 从语言质感角度，按[去AI味](../taishang-laojun/references/deai-rulebook.md)过一遍：先念出来，像不像这个人跟朋友说话；再清假对比和口播十条。能运行代码时，先用总入口目录下的 `scripts/ai_tell_linter.py` 扫一遍稿子，硬拦截默认要改。对照用户样本，只改有具体问题的句子。不靠加口头禅冒充本人，不凭空加心理活动。
+   - 从合规角度（按需）：稿子涉及带货、引流、收费服务、健康/医疗/食品/美妆/金融/法律/考证/热点新闻，或用户问“能不能发”时，按[发前合规排雷](../taishang-laojun/references/compliance-check.md)过一遍；能运行代码时，可先用总入口目录下的 `scripts/compliance_linter.py` 做机械初筛，再人工复核画面、字幕、人设和语境。
 
 ## 交付
 

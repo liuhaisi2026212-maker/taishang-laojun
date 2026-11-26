@@ -2,9 +2,9 @@
 
 **不知道拍啥、不会写稿的，把它丢给你的 AI。**
 
-当前版本 **0.8.0** · [更新记录](docs/validation.md) · [所有发布](https://github.com/liuhaisi2026212-maker/taishang-laojun/releases)
+当前版本 **0.9.0** · [更新记录](docs/validation.md) · [所有发布](https://github.com/liuhaisi2026212-maker/taishang-laojun/releases)
 
-这一版新增：开头怎么**留白**，让观众自己往下想；一条**爆了之后**，下一条怎么接；拿**后台数据**判断问题出在哪一段。
+这一版新增：全赛道**发前合规排雷**（六大常见雷区 + 可选预检脚本，只帮避坑不教绕规则）和发后**卡审/限流四步排查**，并附上各平台官方规则核对入口。
 
 它会先弄清你是谁、想吸引谁，再把别人的爆款和你自己的事，炼成一条你能直接念的短视频口播稿。用的是抖音创作者柳爷（“柳爷不迷糊”）平时做内容的思路：先下判断，落到今天能拍的一件事，不出换谁都能用的泛货。
 
@@ -69,6 +69,7 @@ npx -y skills add liuhaisi2026212-maker/taishang-laojun -g --all
 - 没方向：聊一件你最近做过的事，帮你发现值得拍的内容。
 - 有题没稿：设计第一句、紧接着的证据、中段和收尾，按需写成完整逐字稿。
 - 已有内容：只改开头、标题或某一段，不重来整套流程。
+- 担心踩雷或发出去疑似限流：发前按六大常见雷区排雷，发后按官方四步法查清是违规限流还是内容没留住人。
 - 发过但不对劲：沿链条找到第一个偏掉的环节，选纠偏还是顺势而为。
 - 想变现、接活、做项目：看清你展示的东西招来了谁，设计一个能兑现、合规的承接。
 
@@ -92,7 +93,7 @@ npx -y skills add liuhaisi2026212-maker/taishang-laojun -g --all
 
 **支持技能文件的智能体：** 整个仓库作为项目，或一起安装 skills 下八个子目录（含参考文件）。详见[安装说明](docs/install-guide.md)。不假定所有宿主都兼容，实测边界见[验证说明](docs/validation.md)。
 
-方法阅读：[配方全集](docs/formulas.md)；[炉心](skills/taishang-laojun/references/core-mind.md)；[案例库](skills/taishang-laojun/references/case-book.md)；[访谈框架](docs/flavor-interview.md)；[去AI味](docs/deai-rulebook.md)。[本地全景图](docs/mindmap/炼丹炉全景图.html)可下载后在浏览器打开；[在线预览](https://liuhaisi2026212-maker.github.io/taishang-laojun/mindmap/preview.html)展示远程 main，未发布的本地修复不会出现在该页面。
+方法阅读：[配方全集](docs/formulas.md)；[炉心](skills/taishang-laojun/references/core-mind.md)；[案例库](skills/taishang-laojun/references/case-book.md)；[访谈框架](docs/flavor-interview.md)；[去AI味](docs/deai-rulebook.md)；[发前合规排雷](skills/taishang-laojun/references/compliance-check.md)。[本地全景图](docs/mindmap/炼丹炉全景图.html)可下载后在浏览器打开；[在线预览](https://liuhaisi2026212-maker.github.io/taishang-laojun/mindmap/preview.html)展示远程 main，未发布的本地修复不会出现在该页面。
 
 ## 方法来源与维护
 

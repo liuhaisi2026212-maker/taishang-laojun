@@ -4,7 +4,7 @@
 <rect width="1200" height="1662" rx="24" fill="#101725"/>
 <g font-family="-apple-system,BlinkMacSystemFont,'Segoe UI','Noto Sans CJK SC','Microsoft YaHei',sans-serif">
 <text x="44" y="66" font-size="42" fill="#ffd36a" font-weight="700">太上老君 · AI炼丹炉</text>
-<text x="44" y="106" font-size="23" fill="#d4dce9" font-weight="400">把别人的爆款，炼成你自己的视频　·　版本 0.8.0</text>
+<text x="44" y="106" font-size="23" fill="#d4dce9" font-weight="400">把别人的爆款，炼成你自己的视频　·　版本 0.9.0</text>
 <rect x="40" y="136" width="1120" height="96" rx="16" fill="#192439" stroke="#ffd36a"/>
 <text x="64" y="174" font-size="27" fill="#ffd36a" font-weight="700">总控台：按你此刻在哪，调对的兵器</text>
 <text x="64" y="210" font-size="21" fill="#d4dce9" font-weight="400">有灵感就用自己的事直接拍；没灵感就刷对标、拆爆款、存弹药库。需要认识你时才访谈。AI 下判断，你来校准。</text>
@@ -73,8 +73,8 @@
 <text x="62" y="1422" font-size="18" fill="#d4dce9" font-weight="400">一个能兑现的交付，只走平台允许的承接</text>
 <text x="62" y="1464" font-size="18" fill="#ffd36a" font-weight="400">交付：一个交付、承接路径、交付成本与观察点</text>
 <text x="44" y="1516" font-size="19" fill="#9facbf" font-weight="400">底味访谈：需要认识你时才用：让你越聊越想说，AI 替你总结成使用者档案</text>
-<text x="44" y="1550" font-size="19" fill="#9facbf" font-weight="400">反馈复盘：先看数据定位哪一段，再沿链条找偏差，选纠偏或顺势</text>
-<text x="44" y="1584" font-size="19" fill="#ffbd72" font-weight="400">底线：不编经历和数字 · 钩子要兑现 · 合规承接 · 不服务害人的需求</text>
+<text x="44" y="1550" font-size="19" fill="#9facbf" font-weight="400">反馈复盘：先四步排限流，再看数据定位哪一段，沿链条找偏差，选纠偏或顺势</text>
+<text x="44" y="1584" font-size="19" fill="#ffbd72" font-weight="400">底线：不编经历和数字 · 钩子要兑现 · 发前合规排雷 · 不服务害人的需求</text>
 <text x="44" y="1628" font-size="16" fill="#6f7d93" font-weight="400">方法来自柳爷做内容的经验，不是流量保证。 点击图片进入可展开的交互版。</text>
 </g>
 </svg>

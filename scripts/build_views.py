@@ -15,7 +15,7 @@ def body(path):
         text = text.split('---\n', 2)[2]
     return text.strip()
 
-REFERENCES = ['core-mind', 'case-book', 'flavor-interview', 'material-card', 'deai-rulebook', 'edit-six-cuts', 'feedback-review']
+REFERENCES = ['core-mind', 'case-book', 'flavor-interview', 'material-card', 'deai-rulebook', 'edit-six-cuts', 'compliance-check', 'feedback-review']
 LITE = ['taishang-laojun', 'core-mind', 'flavor-interview'] + ORDER[1:]
 FIRST_RULES = ('## 先读这六条（读不完全文也要守住）\n\n'
                '1. 不知道用户是谁，就不写第一人称经历：不写“我做了二十年”“上个月一个客户来找我”，不编具体案例和数字来撑开头。先用一句话说明“我还不知道你是谁，这版没写你的经历”。\n'
@@ -56,7 +56,7 @@ def render(bot=False, lite=False):
     if lite:
         heading = ('# 太上老君·AI炼丹炉：Bot精简版\n\n' + f'版本 {VERSION}。' +
                    '适合系统提示词有长度限制的智能体（如各类 Bot 的人设设定框）。包含总入口、炉心、底味访谈和七个模块；'
-                   '推理示范、去AI味、改稿六刀和复盘细则在完整版 Bot 文件里，可作为知识库附件一起上传。'
+                   '推理示范、去AI味、改稿六刀、发前合规排雷和复盘细则在完整版 Bot 文件里，可作为知识库附件一起上传。'
                    '本文件由技能源生成，不要单独维护另一套规则。\n\n' + FIRST_RULES)
         parts.append('## 许可\n\n' + LICENSE_NOTE + '第三方声明见完整版。')
     elif bot:
