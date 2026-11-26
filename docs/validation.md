@@ -4,7 +4,7 @@
 - 新增零依赖预检脚本 `skills/taishang-laojun/scripts/compliance_linter.py`：与 `ai_tell_linter.py` 同风格，分高危红线和语境提醒两档，支持文件、标准输入、`--text`、`--format json`、`--fail-on-high` 与 `--allow`，对二进制和非 UTF-8 文件返回错误提示与退出码 2。
 - 反馈复盘（`references/feedback-review.md`）：新增“先排除发不出去或疑似限流”四步排查（官方账号体检与违规通知、看流量来源推荐页占比、付费加热测审、查字幕/画面/主页/AI 声明与删稿四个连坐坑）。
 - 入口与构建同步：总控台兵器架、回炉审改流程、成丹承接、全景图、README、人读版和完整版 Bot 同步更新；`bot-prompt/liuye-bot-lite.md` 精简版保持不塞入新增参考卡，避免拉长设定框占用。
-- 测试：运行 `build_views.py`、`check_package.py`（含隔离安装、链接和假对比检查）、`test_portability.py`（GBK 与 Windows 路径回归），并实测 `compliance_linter.py` 的正常文案、多类风险文案、允许清单、JSON 输出及错误输入分支。**没有做模拟用户对比测试，也没有真人发布过审验证。**
+- 测试：运行 `build_views.py`、`check_package.py`（含隔离安装、链接和假对比检查）、`test_portability.py`（含 GBK 与 Windows 路径回归，以及 `compliance_linter.py` 词库、超长单行允许清单、嵌套去重和错误输入回归测试），并实测核验文档外链可访问性。**没有做模拟用户对比测试，也没有真人发布过审验证。**
 
 # 0.8.0 留白、爆了之后怎么接、用数据复盘（2026-11-08）
 

@@ -35,7 +35,7 @@ BINARY_EXTS = {
 HIGH_RULES: list[tuple[str, str, str]] = [
     (
         "极限与绝对化用语",
-        r"(?:最[大高好强快佳优低少便宜牛稳]|最有效|最好用|全网第一|第一品牌|全网最低|顶级|首选|绝对有效|绝对安全|100%|百分百|彻底解决|永久有效|万能)",
+        r"(?:最便宜|最有效|最好用|最[大高好强快佳优低少牛稳]|全网第一|第一品牌|全网最低|顶级|首选|绝对有效|绝对安全|100%|百分百|彻底解决|永久有效|万能)",
         "删掉极限或绝对化表述，收回你有真实证据的范围",
     ),
     (
@@ -89,19 +89,49 @@ def line_number(text: str, position: int) -> int:
     return text.count("\n", 0, position) + 1
 
 
-def line_snippet(text: str, position: int) -> str:
+def line_bounds(text: str, position: int) -> tuple[int, int]:
     start = text.rfind("\n", 0, position) + 1
     end = text.find("\n", position)
     if end == -1:
         end = len(text)
-    return text[start:end].strip()[:80]
+    return start, end
+
+
+def line_snippet(text: str, match_start: int, match_end: int, max_len: int = 80) -> str:
+    l_start, l_end = line_bounds(text, match_start)
+    raw = text[l_start:l_end]
+    stripped = raw.strip()
+    if len(stripped) <= max_len:
+        return stripped
+    # 围绕命中词居中截取，确保单行很长时 snippet 一定包含命中词
+    rel_start = match_start - l_start
+    rel_end = match_end - l_start
+    match_len = rel_end - rel_start
+    pad = max(0, (max_len - match_len) // 2)
+    win_start = max(0, rel_start - pad)
+    win_end = min(len(raw), win_start + max_len)
+    win_start = max(0, win_end - max_len)
+    piece = raw[win_start:win_end].strip()
+    if win_start > 0:
+        piece = "…" + piece
+    if win_end < len(raw):
+        piece = piece + "…"
+    return piece
 
 
 def load_allow(path: str | None) -> list[str]:
-    """允许清单：每行一段原文片段，命中所在行包含其中任一片段时跳过。# 开头为注释。"""
+    """允许清单：每行一段原文片段，命中所在整行包含其中任一片段时跳过。# 开头为注释。"""
     if not path:
         return []
-    lines = Path(path).read_text(encoding="utf-8").splitlines()
+    p = Path(path)
+    if not p.exists():
+        raise FileNotFoundError(f"找不到允许清单文件：{path}")
+    if p.is_dir():
+        raise ValueError(f"允许清单路径是文件夹，请传入文本文件：{path}")
+    try:
+        lines = p.read_text(encoding="utf-8").splitlines()
+    except UnicodeDecodeError as exc:
+        raise ValueError(f"允许清单文件不是 UTF-8 编码文本，请另存为 UTF-8 后再试：{path}") from exc
     return [line.strip() for line in lines if line.strip() and not line.lstrip().startswith("#")]
 
 
@@ -114,26 +144,28 @@ def analyze(text: str, allow: list[str] | None = None) -> dict[str, object]:
     ) -> tuple[list[dict[str, object]], list[tuple[int, int]]]:
         exclude_spans = exclude_spans or []
         hits: list[dict[str, object]] = []
-        spans: list[tuple[int, int]] = []
+        covered_spans: list[tuple[int, int]] = []
         for category, pattern, advice in rules:
             for match in re.finditer(pattern, text):
                 start, end = match.span()
                 if any(es <= start and end <= ee for es, ee in exclude_spans):
                     continue
                 word = match.group(0).strip()
-                snippet = line_snippet(text, start)
-                if any(item in word or item in snippet for item in allow):
+                l_start, l_end = line_bounds(text, start)
+                full_line = text[l_start:l_end]
+                # 无论是否被允许清单跳过，都记录已覆盖区间，避免高危放行后被提醒项重复捞出
+                covered_spans.append((start, end))
+                if any(item in word or item in full_line for item in allow):
                     continue
-                spans.append((start, end))
                 hits.append({
                     "line": line_number(text, start),
                     "category": category,
                     "match": word,
-                    "snippet": snippet,
+                    "snippet": line_snippet(text, start, end),
                     "advice": advice,
                 })
         hits.sort(key=lambda item: (int(item["line"]), str(item["category"]), str(item["match"])))
-        return hits, spans
+        return hits, covered_spans
 
     high, high_spans = scan(HIGH_RULES)
     warn, _ = scan(WARN_RULES, exclude_spans=high_spans)
