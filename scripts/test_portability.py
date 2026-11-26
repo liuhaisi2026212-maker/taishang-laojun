@@ -60,6 +60,7 @@ class ComplianceLinterTests(unittest.TestCase):
             [sys.executable, str(self.script), *args],
             input=stdin,
             text=True,
+            encoding="utf-8",
             capture_output=True,
         )
 
@@ -93,6 +94,7 @@ class ComplianceLinterTests(unittest.TestCase):
 
         r_high = self.run_cli("--text", "稳赚不赔，加微信领资料", "--fail-on-high")
         self.assertEqual(r_high.returncode, 1)
+        self.assertIn("命中高危红线", r_high.stdout)
 
         with tempfile.TemporaryDirectory() as td:
             bad_bin = Path(td) / "sample.docx"

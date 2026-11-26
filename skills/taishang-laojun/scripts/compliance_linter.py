@@ -229,6 +229,10 @@ def read_input(path_arg: str | None, text_arg: str | None) -> str:
 
 
 def main() -> int:
+    for stream in (sys.stdin, sys.stdout, sys.stderr):
+        if hasattr(stream, "reconfigure"):
+            stream.reconfigure(encoding="utf-8")
+
     parser = argparse.ArgumentParser(description="全赛道通用发前合规排雷预检。")
     group = parser.add_mutually_exclusive_group()
     group.add_argument("path", nargs="?", help="UTF-8 文本文件；不填或填 - 时读标准输入")
